@@ -1,0 +1,15 @@
+# Use a base image with Python pre-installed
+FROM python:3.9-slim-buster
+
+# Copy the application code into the container
+COPY app.py .
+
+# Install any required dependencies
+RUN pip install flask
+
+# Set the default command to run when the container starts
+CMD ["python", "app.py"]
+
+docker build -t my-app-image .
+
+docker run -p 5000:5000 my-app-image
